@@ -1,0 +1,204 @@
+/* Tema Claro (Padrão) */
+body {
+  font-family: "Dancing Script", cursive;
+  margin: 0;
+  padding: 0;
+  background-color: #fdf6e3;
+  color: #333;
+}
+
+h1,
+h2 {
+  font-family: "Great Vibes", cursive;
+}
+
+#play-music-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #ffb6c1;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+#play-music-button:hover {
+  background-color: #ff69b4;
+}
+
+header,
+footer {
+  background-color: #ffb6c1;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Tema Escuro */
+body.dark-mode {
+  background-color: #333;
+  color: #fdf6e3;
+}
+
+body.dark-mode header,
+body.dark-mode footer {
+  background-color: #444;
+  color: #ffb6c1;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #ffe4e1;
+}
+
+body.dark-mode nav ul {
+  background-color: #555;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+body.dark-mode nav ul li a {
+  color: #fdf6e3;
+}
+
+section {
+  padding: 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px auto;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+}
+
+/* Botão de Alternância de Tema */
+#theme-button {
+  background-color: #ffb6c1;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+#theme-button:hover {
+  background-color: #ff8da1;
+}
+
+/* Ajuste de alinhamento no cabeçalho */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#theme-button {
+  align-self: flex-end; /* Alinha o botão no final */
+}
+
+/* Estilizar a galeria */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 20px auto;
+  max-width: 80%; /* Define uma largura máxima para a galeria */
+}
+
+/* Estilizar as imagens da galeria */
+.gallery img {
+  width: 150px; /* Define a largura das imagens */
+  height: auto; /* Mantém a proporção da imagem */
+  border-radius: 10px; /* Deixa as bordas arredondadas */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+  transition: transform 0.2s, box-shadow 0.2s; /* Animações */
+}
+
+/* Efeito ao passar o mouse */
+.gallery img:hover {
+  transform: scale(1.1); /* Aumenta levemente o tamanho */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Aumenta a sombra */
+}
+
+/* Estilo do Modal */
+.modal {
+  display: none; /* Oculto por padrão */
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8); /* Fundo escuro transparente */
+}
+
+.modal-content {
+  display: block;
+  margin: auto;
+  max-width: 90%;
+  max-height: 80%;
+  border: 5px solid #ffb6c1; /* Detalhe na borda */
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+#caption {
+  color: #fdf6e3;
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+}
+
+/* CSS para o Cupido */
+.cupido {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 150px;
+  height: auto;
+  z-index: 10;
+}
