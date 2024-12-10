@@ -5,18 +5,20 @@ body {
   padding: 0;
   background-color: #fdf6e3;
   color: #333;
+  font-size: 18px; /* Tamanho da fonte ajustado */
 }
 
 h1,
 h2 {
   font-family: "Great Vibes", cursive;
+  font-size: 36px; /* Tamanho da fonte ajustado para títulos */
 }
 
 #play-music-button {
   display: block;
   margin: 20px auto;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 18px; /* Aumentado o tamanho da fonte do botão */
   background-color: #ffb6c1;
   border: none;
   border-radius: 5px;
@@ -68,6 +70,7 @@ nav ul li a {
   text-decoration: none;
   color: #333;
   font-weight: bold;
+  font-size: 18px; /* Tamanho da fonte para os links */
 }
 
 body.dark-mode nav ul li a {
@@ -96,7 +99,7 @@ footer {
   color: white;
   border: none;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 18px; /* Tamanho ajustado */
   cursor: pointer;
   margin-left: 10px;
   border-radius: 5px;
