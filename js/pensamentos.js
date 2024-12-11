@@ -6,7 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Função para carregar pensamentos salvos do servidor
   const carregarPensamentos = async () => {
     try {
-      const response = await fetch("http://localhost:3000/thoughts");
+      const response = await fetch(
+        "https://pensamentos-backend.onrender.com/pensamentos"
+      ); // Alterado para URL correta
       const pensamentos = await response.json();
       pensamentosLista.innerHTML = ""; // Limpa a lista antes de adicionar os novos pensamentos
 
@@ -25,16 +27,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const novoPensamento = pensamentoInput.value.trim();
     if (novoPensamento) {
       try {
-        const response = await fetch("http://localhost:3000/thoughts", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            text: novoPensamento,
-            author: "João", // Aqui você pode pegar o nome do usuário ou algo dinâmico
-          }),
-        });
+        const response = await fetch(
+          "https://pensamentos-backend.onrender.com/pensamentos",
+          {
+            // Alterado para URL correta
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              text: novoPensamento,
+              author: "João", // Aqui você pode pegar o nome do usuário ou algo dinâmico
+            }),
+          }
+        );
 
         if (response.ok) {
           pensamentoInput.value = ""; // Limpa o campo de input
