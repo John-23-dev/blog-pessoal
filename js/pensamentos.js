@@ -7,8 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const carregarPensamentos = async () => {
     try {
       const response = await fetch(
-        "https://pensamentos-backend.onrender.com/pensamentos"
-      ); // Alterado para URL correta
+        "https://pensamentos-backend.onrender.com/thoughts" // URL corrigida para o backend
+      );
+      if (!response.ok) {
+        throw new Error(`Erro ao carregar pensamentos: ${response.statusText}`);
+      }
       const pensamentos = await response.json();
       pensamentosLista.innerHTML = ""; // Limpa a lista antes de adicionar os novos pensamentos
 
@@ -18,7 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
         pensamentosLista.appendChild(p);
       });
     } catch (error) {
-      console.error("Erro ao carregar pensamentos:", error);
+      console.error(error);
+      alert("Erro ao carregar pensamentos. Tente novamente mais tarde.");
     }
   };
 
@@ -28,9 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (novoPensamento) {
       try {
         const response = await fetch(
-          "https://pensamentos-backend.onrender.com/pensamentos",
+          "https://pensamentos-backend.onrender.com/thoughts", // URL corrigida para o backend
           {
-            // Alterado para URL correta
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -51,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       } catch (error) {
         console.error("Erro ao salvar pensamento:", error);
+        alert("Erro ao salvar pensamento. Tente novamente mais tarde.");
       }
     } else {
       alert("Por favor, escreva algo antes de enviar!");
