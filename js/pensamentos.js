@@ -2,12 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const pensamentoInput = document.getElementById("pensamento-input");
   const enviarButton = document.getElementById("enviar-pensamento");
   const pensamentosLista = document.getElementById("pensamentos-lista");
+  const autorSelect = document.getElementById("autor"); // Agora vamos pegar o autor selecionado
 
-  // Função para carregar pensamentos salvos do servidor
+  // Função para carregar pensamentos salvos
   const carregarPensamentos = async () => {
     try {
       const response = await fetch(
-        "https://pensamentos-backend.onrender.com/thoughts" // URL corrigida para o backend
+        "https://pensamentos-backend.onrender.com/thoughts"
       );
       if (!response.ok) {
         throw new Error(`Erro ao carregar pensamentos: ${response.statusText}`);
@@ -17,7 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       pensamentos.forEach((pensamento) => {
         const p = document.createElement("p");
-        p.textContent = pensamento.text; // Assumindo que 'text' é a propriedade do pensamento
+        p.textContent = pensamento.text;
+
+        if (pensamento.author === "João") {
+          p.classList.add("meu-pensamento");
+        } else {
+          p.classList.add("pensamento-namorada");
+        }
+
         pensamentosLista.appendChild(p);
       });
     } catch (error) {
@@ -30,9 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const salvarPensamento = async () => {
     const novoPensamento = pensamentoInput.value.trim();
     if (novoPensamento) {
+      const autor = autorSelect.value; // Pega o autor selecionado
       try {
         const response = await fetch(
-          "https://pensamentos-backend.onrender.com/thoughts", // URL corrigida para o backend
+          "https://pensamentos-backend.onrender.com/thoughts",
           {
             method: "POST",
             headers: {
@@ -40,14 +49,14 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             body: JSON.stringify({
               text: novoPensamento,
-              author: "João", // Aqui você pode pegar o nome do usuário ou algo dinâmico
+              author: autor, // Envia o autor selecionado junto com o pensamento
             }),
           }
         );
 
         if (response.ok) {
-          pensamentoInput.value = ""; // Limpa o campo de input
-          carregarPensamentos(); // Atualiza a lista de pensamentos
+          pensamentoInput.value = "";
+          carregarPensamentos();
         } else {
           const result = await response.json();
           alert(`Erro ao enviar pensamento: ${result.message}`);
@@ -61,9 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Configurar botão de envio
   enviarButton.addEventListener("click", salvarPensamento);
-
-  // Carregar pensamentos ao iniciar
   carregarPensamentos();
 });
