@@ -30,6 +30,23 @@ h2 {
   background-color: #ff69b4;
 }
 
+#stop-music-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 20px; /* Tamanho da fonte ajustado */
+  background-color: #ffb6c1;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+
+#stop-music-button:hover {
+  background-color: #ff69b4;
+}
+
 header,
 footer {
   background-color: #ffb6c1;
@@ -297,20 +314,20 @@ nav ul {
 
 /* Estilo para os pensamentos de João */
 .meu-pensamento {
+  background-color: #e3f2fd; /* Cor de fundo suave */
+  color: #0d47a1; /* Cor do texto */
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border-left: 5px solid #1976d2; /* Linha de destaque na lateral */
+}
+
+/* Estilo para os pensamentos da Namorada */
+.pensamento-namorada {
   background-color: #e0f7fa; /* Cor de fundo suave */
   color: #00796b; /* Cor do texto */
   padding: 10px;
   margin: 10px 0;
   border-radius: 5px;
   border-left: 5px solid #00796b; /* Linha de destaque na lateral */
-}
-
-/* Estilo para os pensamentos da Namorada */
-.pensamento-namorada {
-  background-color: #fce4ec; /* Cor de fundo suave */
-  color: #ad1457; /* Cor do texto */
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
-  border-left: 5px solid #ad1457; /* Linha de destaque na lateral */
 }

@@ -8,11 +8,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Reproduzir Música
+  let audio; // Variável para armazenar o objeto de áudio
   const playMusicButton = document.getElementById("play-music-button");
   if (playMusicButton) {
     playMusicButton.addEventListener("click", () => {
-      const audio = new Audio("photography-ed-sheeran.mp3"); // Caminho correto
+      if (!audio) {
+        // Cria o áudio se ainda não foi inicializado
+        audio = new Audio("photography-ed-sheeran.mp3");
+      }
+      // Retoma ou toca a música
       audio.play();
+    });
+  }
+
+  // Parar Música
+  const stopMusicButton = document.getElementById("stop-music-button");
+  if (stopMusicButton) {
+    stopMusicButton.addEventListener("click", () => {
+      if (audio) {
+        audio.pause(); // Pausa a música
+        audio.currentTime = 0; // Reseta a posição da música
+      }
     });
   }
 
