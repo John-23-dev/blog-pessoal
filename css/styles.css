@@ -435,3 +435,82 @@ footer {
     padding: 8px 16px;
   }
 }
+
+#citacoes {
+  text-align: center;
+  margin: 20px;
+  font-family: "Dancing Script", cursive;
+}
+
+blockquote {
+  font-size: 1.5em;
+  margin: 10px 0;
+  quotes: "“" "”" "‘" "’";
+}
+
+blockquote::before {
+  content: open-quote;
+}
+
+blockquote::after {
+  content: close-quote;
+}
+
+cite {
+  display: block;
+  margin-top: 5px;
+  font-size: 1em;
+  font-style: italic;
+}
+
+#linha-do-tempo {
+  margin: 20px;
+  padding: 10px;
+}
+
+.timeline {
+  position: relative;
+  margin: 20px auto;
+  padding: 10px;
+  list-style: none;
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.timeline-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #f7d1cd;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+}
+
+.timeline-content {
+  margin-left: 20px;
+  padding: 10px;
+  border-left: 3px solid #f7d1cd;
+}
+
+.timeline-content h3 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.timeline-content p {
+  margin: 5px 0 0;
+  font-size: 0.9em;
+}
+
+.timeline-item:hover .timeline-icon {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}

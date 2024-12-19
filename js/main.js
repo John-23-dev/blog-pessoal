@@ -81,3 +81,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// Buscar citação da API
+
+document.addEventListener("DOMContentLoaded", () => {
+  const API_URL = "https://api.quotable.io/random"; // Exemplo de API gratuita para citações
+
+  async function buscarCitacao() {
+    try {
+      const resposta = await fetch(API_URL);
+      const dados = await resposta.json();
+      document.getElementById("citacao").innerText = `"${dados.content}"`;
+      document.getElementById("autor").innerText = `- ${dados.author}`;
+    } catch (error) {
+      document.getElementById("citacao").innerText =
+        "Não foi possível carregar a citação.";
+      console.error("Erro ao buscar citação:", error);
+    }
+  }
+
+  buscarCitacao();
+});
