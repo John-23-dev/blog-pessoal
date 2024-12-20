@@ -82,21 +82,58 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Buscar citação da API
+// Buscar Citações da API
 
 document.addEventListener("DOMContentLoaded", () => {
-  const API_URL = "https://api.quotable.io/random"; // Exemplo de API gratuita para citações
+  const API_URL = "https://api.quotable.io/random"; // API original
+  const LOCAL_JSON = "./citacoes.json"; // Caminho do JSON local
 
   async function buscarCitacao() {
     try {
+      console.log("Iniciando busca de citação...");
+
+      // Tentando buscar a citação da API
       const resposta = await fetch(API_URL);
+      console.log("Resposta recebida da API:", resposta);
+
+      if (!resposta.ok) {
+        throw new Error(
+          `Erro na resposta da API: ${resposta.status} ${resposta.statusText}`
+        );
+      }
+
       const dados = await resposta.json();
+      console.log("Dados recebidos da API:", dados);
+
+      // Atualizando a citação na página
       document.getElementById("citacao").innerText = `"${dados.content}"`;
       document.getElementById("autor").innerText = `- ${dados.author}`;
+      console.log("Citação atualizada com sucesso.");
     } catch (error) {
-      document.getElementById("citacao").innerText =
-        "Não foi possível carregar a citação.";
-      console.error("Erro ao buscar citação:", error);
+      console.error("Erro ao buscar citação da API, tentando fallback:", error);
+
+      // Caso ocorra um erro, usar o JSON local
+      try {
+        const respostaLocal = await fetch(LOCAL_JSON);
+        const dadosLocal = await respostaLocal.json();
+        console.log("Citações carregadas do JSON local:", dadosLocal);
+
+        // Escolhendo uma citação aleatória do arquivo local
+        const citacaoAleatoria =
+          dadosLocal[Math.floor(Math.random() * dadosLocal.length)];
+
+        document.getElementById(
+          "citacao"
+        ).innerText = `"${citacaoAleatoria.content}"`;
+        document.getElementById(
+          "autor"
+        ).innerText = `- ${citacaoAleatoria.author}`;
+        console.log("Citação local atualizada com sucesso.");
+      } catch (fallbackError) {
+        console.error("Erro ao carregar citação do JSON local:", fallbackError);
+        document.getElementById("citacao").innerText =
+          "Não foi possível carregar a citação.";
+      }
     }
   }
 
